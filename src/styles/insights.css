@@ -1,0 +1,313 @@
+/* ------------------------------- insights ------------------------------- */
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.insights-empty {
+  margin-top: 4px;
+}
+
+.insight-footnote {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--faint);
+}
+
+/* -------------------------------- weekday ------------------------------- */
+
+.weekday-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.weekday-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 12px 11px;
+  border: 1px solid var(--line-soft);
+  border-radius: 11px;
+  background: var(--surface-2);
+  transition: border-color 140ms ease;
+}
+
+.weekday-cell.is-best {
+  border-color: var(--accent-line);
+  box-shadow: 0 0 0 1px rgba(201, 247, 90, 0.08) inset;
+}
+
+.weekday-name {
+  font-size: 9.5px;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.weekday-cell strong {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.weekday-meta {
+  font-size: 9px;
+  color: var(--faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------- histogram ------------------------------ */
+
+.histogram {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 190px;
+  padding-top: 6px;
+}
+
+.hist-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.hist-count {
+  font-size: 9.5px;
+  color: var(--faint);
+  line-height: 1;
+  min-height: 10px;
+}
+
+.hist-track {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.022);
+  overflow: hidden;
+}
+
+.hist-bar {
+  display: block;
+  width: 100%;
+  min-height: 2px;
+  border-radius: 5px 5px 2px 2px;
+  background: linear-gradient(180deg, var(--green), rgba(91, 227, 163, 0.35));
+  transition: height 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hist-bar.loss {
+  background: linear-gradient(180deg, var(--red), rgba(255, 123, 123, 0.32));
+}
+
+.hist-bar.flat {
+  background: linear-gradient(180deg, var(--muted), rgba(141, 153, 143, 0.3));
+}
+
+.hist-label {
+  font-size: 8.5px;
+  color: var(--faint);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* -------------------------------- rankings ------------------------------ */
+
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.rank-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.rank-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.rank-name {
+  font-size: 11.5px;
+  font-weight: 560;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rank-meta {
+  font-size: 9.5px;
+  color: var(--faint);
+}
+
+.rank-bar {
+  display: block;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+
+.rank-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(91, 227, 163, 0.4), var(--green));
+  transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rank-bar > span.neg {
+  background: linear-gradient(90deg, rgba(255, 123, 123, 0.4), var(--red));
+}
+
+.rank-net {
+  font-size: 11.5px;
+  font-weight: 620;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ------------------------------ leaderboard ----------------------------- */
+
+.leader-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.leader-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 9px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition:
+    background 130ms ease,
+    border-color 130ms ease;
+}
+
+.leader-row:hover {
+  background: var(--surface-2);
+  border-color: var(--line-soft);
+}
+
+.leader-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-family: var(--font-display);
+  font-size: 9.5px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.leader-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 570;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leader-meta {
+  font-size: 9.5px;
+  font-weight: 450;
+  color: var(--faint);
+}
+
+.leader-net {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  font-size: 12px;
+  font-weight: 620;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.leader-avg {
+  font-size: 9px;
+  font-weight: 450;
+  color: var(--faint);
+}
+
+/* --------------------------------- metrics ------------------------------ */
+
+.metric-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 11.5px;
+}
+
+.metric-row:first-child {
+  padding-top: 0;
+}
+
+.metric-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.metric-row span {
+  color: var(--muted);
+  min-width: 0;
+}
+
+.metric-row strong {
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-align: right;
+  white-space: nowrap;
+}
